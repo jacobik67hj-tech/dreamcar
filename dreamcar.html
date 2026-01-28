@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="DreamCar Studio | Renowacja Lamp Jaworze">
+    <meta property="og:description" content="Profesjonalna renowacja reflektorów z dojazdem do klienta. Tylko 50 zł za lampę!">
+    
+    <title>DreamCar Studio | Renowacja Lamp Jaworze</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="animated-bg"></div>
+    
+    <nav class="glass-nav">
+        <div class="logo">DREAM<span>CAR</span></div>
+        <div class="status-badge"><span class="pulse"></span> Dostępny</div>
+    </nav>
+
+    <main class="container">
+        <section class="hero-split">
+            <div class="hero-text">
+                <span class="location-tag">Jaworze i okolice</span>
+                <h1>Przywracam <br><span class="gradient-text">Przejrzystość.</span></h1>
+                <p>Profesjonalna renowacja reflektorów z dojazdem pod Twój dom.</p>
+                
+                <div class="features-mini">
+                    <div class="f-item">🛡️ Ochrona UV</div>
+                    <div class="f-item">🏠 U Ciebie</div>
+                    <div class="f-item">✅ Gwarancja</div>
+                </div>
+            </div>
+
+            <div class="offer-card glass">
+                <div class="price-header">
+                    <p>Jedynie za</p>
+                    <h2>50 zł <span>/ lampę</span></h2>
+                </div>
+                <ul class="specs">
+                    <li><span class="check">✓</span> Regeneracja reflektorów</li>
+                    <li><span class="check">✓</span> Powłoka Zabezpieczająca</li>
+                    <li><span class="check">✓</span> Dojazd Gratis (na terenie Jaworza)</li>
+                </ul>
+                <a href="tel:882902566" class="cta-primary">Zadzwoń i zarezerwuj</a> <br>
+                <p>Lub umów się przez wiadomość SMS</p>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <div class="section-header">
+                <h3>Porównaj efekt u zaufanych klientów</h3>
+                <div class="line"></div>
+            </div>
+            
+            <div class="comparison-slider glass">
+                <div class="image-container">
+                    <img class="img-after" src="https://images.unsplash.com/photo-1562624564-817666498425?q=80&w=1000" alt="Po">
+                    <div class="img-before-wrapper">
+                        <img class="img-before" src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?q=80&w=1000" alt="Przed">
+                    </div>
+                    <input type="range" min="0" max="100" value="50" class="slider-input">
+                    <div class="slider-line"></div>
+                    <div class="slider-button"></div>
+                </div>
+                <div class="card-footer">
+                    <h4>BMW Serii 3 - Efekt u klienta</h4>
+                    <p>Przesuń suwak, aby zobaczyć różnicę</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section class="about-section">
+        <div class="about-card glass">
+            <div class="about-content">
+                <div class="avatar">👨‍💻</div>
+                <div class="text">
+                    <h3>Pasja i Precyzja</h3>
+                    <p>Jestem mieszkańcem Jaworza i pasjonatem motoryzacji. W <b>DreamCar Studio</b> łączę nowoczesne techniki renowacji z dbałością o każdy detal. Poprawiam Twoje oświetlenie drogi za ułamek ceny nowych reflektorów.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="glass-footer">
+        <p>Kontakt:</p>
+        <a href="tel:882902566" class="phone-big">📞 882902566</a>
+        <p class="working-hours">Jeśli nie odbieram, proszę o wiadomość SMS</p>
+    </footer>
+
+    <script>
+        const slider = document.querySelector('.slider-input');
+        const imgBefore = document.querySelector('.img-before-wrapper');
+        const sliderLine = document.querySelector('.slider-line');
+        const sliderButton = document.querySelector('.slider-button');
+
+        slider.addEventListener('input', (e) => {
+            const val = e.target.value;
+            imgBefore.style.width = val + '%';
+            sliderLine.style.left = val + '%';
+            sliderButton.style.left = val + '%';
+        });
+    </script>
+</body>
+</html>

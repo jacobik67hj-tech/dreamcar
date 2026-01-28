@@ -1,0 +1,143 @@
+:root {
+    --bg: #0b0e14;
+    --accent: #0070f3;
+    --text: #ffffff;
+    --text-dim: #a0aec0;
+    --glass: rgba(255, 255, 255, 0.04);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    overflow-x: hidden;
+}
+
+.animated-bg {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 15% 15%, rgba(0, 112, 243, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(0, 118, 255, 0.08) 0%, transparent 40%);
+    z-index: -1;
+}
+
+.container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+
+/* Nav */
+.glass-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 15px 20px; background: rgba(11, 14, 20, 0.8);
+    position: sticky; top: 0; z-index: 100;
+    height: 100px;
+}
+.logo { font-weight: 1000; font-size: 1.2rem; font-size: 250%;}
+.logo span { color: var(--accent); }
+.status-badge { background: rgba(34, 197, 94, 0.1); color: #4ade80; padding: 5px 12px; border-radius: 50px; font-size: 1.00rem; font-weight: 600; }
+.pulse { height: 6px; width: 6px; background: #22c55e; display: inline-block; border-radius: 50%; margin-right: 5px; animation: shadow-pulse 2s infinite; }
+
+@keyframes shadow-pulse { 0% { box-shadow: 0 0 0 0px rgba(34, 197, 94, 0.4); } 100% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); } }
+
+/* Hero Mobile-First */
+.hero-split {
+    display: flex; flex-direction: column; gap: 30px; padding: 40px 0;
+}
+
+@media (min-width: 850px) {
+    .hero-split { flex-direction: row; align-items: center; padding: 80px 0; }
+    .hero-text { flex: 1.2; text-align: left; }
+    .offer-card { flex: 1; }
+}
+
+.hero-text { text-align: center; }
+.location-tag { color: var(--accent); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+.hero-text h1 { font-size: 2.8rem; line-height: 1.1; margin: 15px 0; font-weight: 800; }
+@media (min-width: 850px) { .hero-text h1 { font-size: 4rem; } }
+.gradient-text { background: linear-gradient(90deg, #fff, var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-text p { color: var(--text-dim); font-size: 1.1rem; }
+.features-mini { display: flex; gap: 10px; margin-top: 20px; justify-content: center; }
+@media (min-width: 850px) { .features-mini { justify-content: flex-start; } }
+.f-item { background: var(--glass); padding: 6px 12px; border-radius: 10px; font-size: 0.8rem; border: 1px solid var(--glass-border); }
+
+/* Offer Card */
+.glass { background: var(--glass); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 28px; }
+.offer-card { padding: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+.price-header h2 { font-size: 3rem; margin: 5px 0; }
+.price-header span { font-size: 1rem; color: var(--text-dim); }
+.specs { list-style: none; margin: 20px 0; }
+.specs li { margin: 10px 0; color: var(--text-dim); font-size: 0.95rem; }
+.check { color: var(--accent); margin-right: 8px; font-weight: 800; }
+.cta-primary { display: block; background: var(--accent); color: white; text-align: center; padding: 18px; border-radius: 15px; text-decoration: none; font-weight: 800; font-size: 1.1rem; box-shadow: 0 8px 20px rgba(0, 112, 243, 0.3); }
+
+/* Comparison Slider */
+.gallery { padding: 40px 0; }
+.section-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+.section-header h3 { font-size: 0.8rem; text-transform: uppercase; color: var(--text-dim); white-space: nowrap; letter-spacing: 2px; }
+.line { height: 1px; background: var(--glass-border); width: 100%; }
+
+.comparison-slider { position: relative; overflow: hidden; max-width: 600px; margin: 0 auto; }
+.image-container { position: relative; width: 100%; height: 300px; overflow: hidden; cursor: col-resize; }
+.image-container img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+.img-before-wrapper { position: absolute; top: 0; left: 0; height: 100%; width: 50%; overflow: hidden; border-right: 2px solid white; }
+.img-before { width: 1000px; max-width: none; } /* Zapobiega skalowaniu obrazka przy przycinaniu */
+
+.slider-input { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: col-resize; z-index: 10; }
+.slider-line { position: absolute; top: 0; left: 50%; width: 2px; height: 100%; background: white; pointer-events: none; transform: translateX(-50%); }
+.slider-button { position: absolute; top: 50%; left: 50%; width: 40px; height: 40px; background: white; border-radius: 50%; transform: translate(-50%, -50%); pointer-events: none; box-shadow: 0 0 15px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; }
+.slider-button::before { content: '↔'; color: black; font-weight: 800; }
+
+.card-footer { padding: 15px; text-align: center; }
+.card-footer p { font-size: 0.8rem; color: var(--text-dim); }
+
+/* Footer */
+.glass-footer { margin: 20px 0 40px; padding: 40px 20px; text-align: center; }
+.phone-big { font-size: 1.6rem; color: var(--accent); text-decoration: none; font-weight: 800; display: block; margin: 10px 0; }
+.working-hours { color: var(--text-dim); font-size: 0.85rem; }
+
+/* SEKCJA O MNIE */
+.about-section {
+    padding: 20px 0;
+}
+
+.about-card {
+    padding: 30px;
+    margin: 0 auto;
+    max-width: 800px;
+    border-left: 4px solid var(--accent); /* Akcent kolorystyczny */
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.avatar {
+    font-size: 3rem;
+    background: rgba(255,255,255,0.05);
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+.about-content h3 {
+    margin-bottom: 10px;
+    color: var(--accent);
+}
+
+.about-content p {
+    color: #94a3b8;
+    font-size: 0.95rem;
+}
+
+/* Responsywność dla "O mnie" */
+@media (max-width: 600px) {
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
